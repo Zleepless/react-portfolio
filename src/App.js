@@ -1,32 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 import { Layout, Header, Navigation, Drawer, Content } from 'react-mdl';
+import Main from './components/main';
+import { Link } from 'react-router-dom';
 
-function App() {
-    return (
-        <div style={{ height: '500px', position: 'relative' }}>
-            <Layout style={{ background: 'url(http://www.getmdl.io/assets/demos/transparent.jpg) center / cover' }}>
-                <Header transparent title="Title" style={{ color: 'white' }}>
-                    <Navigation>
-                        <a href="#">Resume</a>
-                        <a href="#">Project</a>
-                        <a href="#">About</a>
-                        <a href="#">Contact</a>
-                    </Navigation>
-                </Header>
-                <Drawer title="Title">
-                    <Navigation>
-                        <a href="#">Resume</a>
-                        <a href="#">Project</a>
-                        <a href="#">About</a>
-                        <a href="#">Contact</a>
-                    </Navigation>
-                </Drawer>
-                <Content />
-            </Layout>
-        </div>
-    );
+class App extends Component {
+    render() {
+        return (
+            <div className="demo-big-content">
+                <Layout>
+                    <Header className="header-color" title={<Link style={{ textDecoration: 'none', color: 'white' }} to="/">MyPortfolio</Link>} scroll>
+                        <Navigation>
+                            <Link to="/resume">Resume</Link>
+                            <Link to="/aboutme">About Me</Link>
+                            <Link to="/projects">Projects</Link>
+                            <Link to="/contact">Contact</Link>
+                        </Navigation>
+                    </Header>
+                    <Drawer title={<Link style={{ textDecoration: 'none', color: 'black' }} to="/">MyPortfolio</Link>}>
+                        <Navigation>
+                            <Link to="/resume">Resume</Link>
+                            <Link to="/aboutme">About Me</Link>
+                            <Link to="/projects">Projects</Link>
+                            <Link to="/contact">Contact</Link>
+                        </Navigation>
+                    </Drawer>
+                    <Content>
+                        <div className="page-content" />
+                        <Main />
+                    </Content>
+                </Layout>
+            </div>
+
+        );
+    }
 }
 
 export default App;
